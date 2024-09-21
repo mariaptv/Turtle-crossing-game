@@ -17,3 +17,6 @@ class Player(Turtle):
 
      def move(self):
          self.forward(20)
+
+     def go_inicial(self):
+         self.goto(0, -280)
