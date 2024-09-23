@@ -1,5 +1,5 @@
 import time
-from turtle import Screen
+from turtle import Screen, Turtle
 from player import Player
 from car_manager import CarManager
 from scoreboard import Scoreboard
@@ -11,7 +11,8 @@ screen.tracer(0)
 
 turtle = Player()
 cars =  CarManager()
-
+scoreboard = Scoreboard()
+scoreboard.update_scoreboard()
 screen.listen()
 
 screen.onkey(turtle.move, "Up")
@@ -28,7 +29,16 @@ while game_is_on:
 
     if turtle.ycor() == 300:
         turtle.go_inicial()
+        scoreboard.score += 1
+        scoreboard.update_scoreboard()
+        cars.increase_speed()
 
     screen.update()
+
+game_over = Turtle()
+game_over.write("GAME OVER", align="center", font=("Courier", 24, "normal"))
+game_over.color("black")
+game_over.penup()
+game_over.hideturtle()
 
 screen.exitonclick()
